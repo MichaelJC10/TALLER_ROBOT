@@ -1,2 +1,6 @@
+#ifndef MAQUINA_TRACYECTORIA_H
+#define MAQUINA_TRACYECTORIA_H
 
-void ejecucionTrayectoria(int,int,int,bool);
+#include "Arduino.h"
+void ejecucionTrayectoria(bool);
+#endif

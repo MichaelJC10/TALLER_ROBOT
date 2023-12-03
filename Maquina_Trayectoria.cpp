@@ -1,9 +1,11 @@
 #include "Maquina_Tracyectoria.h"
 #include "Motores.h"
 void ejecucionTrayectoria(bool recepcion) {
-	int estado = 0;
+	byte estado = 0;
+  int tiempo = 0;
 	switch (estado) {
 	case 0:
+    parar();
 		if (recepcion == true) {
 			estado = 1;
 		}

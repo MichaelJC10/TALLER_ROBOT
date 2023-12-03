@@ -1,36 +1,36 @@
 #include "Motores.h"
-// Definicion de pines del motor izquierdo
-int motorIzquierdo1 = 25;
-int motorIzquierdo2 = 26;
-
-// Definicion de pines del motor derecho
-int motorDerecho1 = 34;
-int motorDerecho2 = 35;
 
 void avanzar() {
-	digitalWrite(motorIzquierdo1, HIGH);
-	digitalWrite(motorIzquierdo2, LOW);
-	digitalWrite(motorDerecho1, HIGH);
-	digitalWrite(motorDerecho2, LOW);
+	digitalWrite(motorIzquierdo1, 1);
+	digitalWrite(motorIzquierdo2, 0);
+	digitalWrite(motorDerecho1, 1);
+	digitalWrite(motorDerecho2, 0);
 }
 
 void retroceder() {
-	digitalWrite(motorIzquierdo1, LOW);
-	digitalWrite(motorIzquierdo2, HIGH);
-	digitalWrite(motorDerecho1, LOW);
-	digitalWrite(motorDerecho2, HIGH);
+	digitalWrite(motorIzquierdo1, 0);
+	digitalWrite(motorIzquierdo2, 1);
+	digitalWrite(motorDerecho1, 0);
+	digitalWrite(motorDerecho2, 1);
 }
 
 void girarIzquierda() {
-	digitalWrite(motorIzquierdo1, LOW);
-	digitalWrite(motorIzquierdo2, HIGH);
-	digitalWrite(motorDerecho1, HIGH);
-	digitalWrite(motorDerecho2, LOW);
+	digitalWrite(motorIzquierdo1, 0);
+	digitalWrite(motorIzquierdo2, 1);
+	digitalWrite(motorDerecho1, 1);
+	digitalWrite(motorDerecho2, 0);
 }
 
 void girarDerecha() {
-	digitalWrite(motorIzquierdo1, HIGH);
-	digitalWrite(motorIzquierdo2, LOW);
-	digitalWrite(motorDerecho1, LOW);
-	digitalWrite(motorDerecho2, HIGH);
+	digitalWrite(motorIzquierdo1, 1);
+	digitalWrite(motorIzquierdo2, 0);
+	digitalWrite(motorDerecho1, 0);
+	digitalWrite(motorDerecho2, 1);
 }
+
+void parar(){
+	digitalWrite(motorIzquierdo1, 0);
+	digitalWrite(motorIzquierdo2, 0);
+	digitalWrite(motorDerecho1, 0);
+	digitalWrite(motorDerecho2, 0); 
+};

@@ -2,5 +2,9 @@
 #define MAQUINA_TRACYECTORIA_H
 
 #include "Arduino.h"
-void ejecucionTrayectoria(bool);
+
+extern unsigned long tiempo;
+extern unsigned long tiempo2;
+
+void ejecucionTrayectoria(bool,bool);
 #endif

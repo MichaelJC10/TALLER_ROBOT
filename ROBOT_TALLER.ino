@@ -10,19 +10,42 @@ void Motores(void *pvParameters);
 void Coneccion(void *pvParameters);
 
 //DECLARACION DE VARIABLES GLOBALES
-//DECLARACION DE PINES
-// Definicion de pines del motor izquierdo
-#define motorIzquierdo1  33
-#define motorIzquierdo2  32
-#define velocidadIzquierdo 31
-#define ledpin 2
+unsigned long tiempo;
+unsigned long tiempo2 = 0;
+float voltajex = 0;
+float voltajey = 0;
+float voltajez = 0;
 
+float aceleracionx = 0;
+float aceleraciony = 0;
+float aceleracionz = 0;
+
+float velocidadx = 0;
+float velocidady = 0;
+
+float posicionx = 0;
+float posiciony = 0;
+//DECLARACION DE PINES
+//Definicion de pines ACELEROMETRO
+#define ejex 34
+#define ejey 35
+#define ejez 36
+//Definicion de pines para LEDS
+#define ledR 5
+#define ledG 18
+#define ledB 19
+// Definicion de pines del motor izquierdo
+#define motorIzquierdo1  13
+#define motorIzquierdo2  12
+#define velocidadIzquierdo 14
 // Definicion de pines del motor derecho
-#define motorDerecho1  35
-#define motorDerecho2  34
-#define velocidadDerecho 30
+#define motorDerecho1  27
+#define motorDerecho2  26
+#define velocidadDerecho 25
 
 void setup() {
+  //DEFINIENDO LA RESOLUCION
+  analogReadResolution(10);
   // Crear tareas
   xTaskCreatePinnedToCore(
     Motores,    // Función de la tarea
@@ -52,32 +75,25 @@ void setup() {
   pinMode(motorDerecho2,OUTPUT);
   pinMode(velocidadIzquierdo,OUTPUT);
   pinMode(velocidadDerecho,OUTPUT);
-  pinMode(ledpin,OUTPUT);
-  //PINES
+  //PINES PARA LEDS
+  pinMode(ledR, OUTPUT);
+  pinMode(ledG, OUTPUT);
+  pinMode(ledB, OUTPUT);
+  //PINES PARA ACELEROMETRO
+  pinMode(ejex, OUTPUT);
+  pinMode(ejey, OUTPUT);
+  pinMode(ejez, OUTPUT);
 }
 
-void loop() { //EL LOOP NO SE OCUPARA POR AHORA
+void loop() { 
 }
 
 void Motores(void *pvParameters) { //TAREA DONDE VA A CORRER LA MAQUINA DE TRAYECTORIA CONTROLANDO LOS MOTORES
   (void) pvParameters; // Evitar advertencia de "no utilizado"
-
+  bool aa = true;
+  bool bb = true;
   for(;;) {
-    digitalWrite(ledpin, 1);
-    avanzar();
-    
-    delay(1000);
-    digitalWrite(ledpin, 0);
-    retroceder();
-    delay(1000);
-    digitalWrite(ledpin, 1);
-    girarIzquierda();
-    delay(1000);
-    digitalWrite(ledpin, 0);
-    girarDerecha();
-    delay(1000);
-    parar();
-    delay(4000);
+    ejecucionTrayectoria(aa,bb);
   }
 }
 

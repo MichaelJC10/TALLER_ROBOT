@@ -24,5 +24,6 @@ extern float posiciony;
 void aceleracion();
 void velocidad();
 void posicion();
+bool deteccionAnomalia(float);
 
 #endif

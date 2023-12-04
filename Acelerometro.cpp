@@ -1,6 +1,14 @@
 #include "Acelerometro.h"
 
+bool deteccionAnomalia(float ace){
 
+  if(ace >= 1){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
 void aceleracion(){
   voltajex = 3.3*analogRead(ejex)/1023;
   voltajey = 3.3*analogRead(ejey)/1023;

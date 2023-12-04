@@ -1,5 +1,6 @@
 #include "Motores.h"
 #include "Maquina_Tracyectoria.h"
+#include "Acelerometro.h"
 
 //DECLARACION DE DOS TAREAS PARA TENER MULTINUCLEO EN ESTE CASO 2
 TaskHandle_t motores;
@@ -91,9 +92,8 @@ void loop() {
 void Motores(void *pvParameters) { //TAREA DONDE VA A CORRER LA MAQUINA DE TRAYECTORIA CONTROLANDO LOS MOTORES
   (void) pvParameters; // Evitar advertencia de "no utilizado"
   bool aa = true;
-  bool bb = true;
   for(;;) {
-    ejecucionTrayectoria(aa,bb);
+    ejecucionTrayectoria(aa,deteccionAnomalia(aceleracionz));
   }
 }
 
@@ -101,6 +101,8 @@ void Coneccion(void *pvParameters) { //TAREA DONDE VA A CORRER EL BLUETOOTH
   (void) pvParameters; // Evitar advertencia de "no utilizado"
 
   for (;;) {
-    
+    aceleracion();
+    velocidad();
+    posicion();
   }
 }
